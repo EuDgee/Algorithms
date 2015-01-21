@@ -1,32 +1,32 @@
 package edu.eudgee.algorithms
 
-import org.scalacheck.Gen
-import org.scalatest._
-import org.scalacheck.Prop.forAll
+import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalatest.{FeatureSpec, GivenWhenThen, Matchers}
 
 
-class MergeSortSpec extends FlatSpec with Matchers {
-  "A Merge Sort" should "sort a simple array" in {
-    val unsortedArray: Array[Int] =
-      Array(0, 1, 2)
-    val sortedArray: Array[Int] =
-      Array(0, 1, 2)
-    MergeSort.sort(unsortedArray) should be (sortedArray)
-  }
+class MergeSortSpec extends FeatureSpec with GivenWhenThen with Matchers
+    with GeneratorDrivenPropertyChecks {
 
-  "A Merge Sort" should "sort another simple array" in {
-    val unsortedArray: Array[Int] =
-      Array(2, 0, 1)
-    val sortedArray: Array[Int] =
-      Array(0, 1, 2)
-    MergeSort.sort(unsortedArray) should be (sortedArray)
-  }
+  feature("Merge sort") {
+    scenario("Sort simple arrays") {
+      Given("simple, already sorted array")
+      val alreadySortedArray: Array[Int] = Array(0, 1, 2)
+      Then("sort it correctly")
+      MergeSort.sort(alreadySortedArray) should be (alreadySortedArray)
 
-  "A Merge Sort" should "sort any array" in {
-    val unsortedArray: Array[Int] =
-        Array(2, 123, 45, 34, 235, 3, 53, 34, 3, 0, 34, 345, 1, 346, 54)
-    val sortedArray: Array[Int] =
-        Array(0, 1, 2, 3, 3, 34, 34, 34, 45, 53, 54, 123, 235, 345, 346)
-    MergeSort.sort(unsortedArray) should be (sortedArray)
+      Given("simple, unsorted array")
+      val unsortedArray: Array[Int] = Array(2, 0, 1)
+      Then("sort it correctly")
+      val sortedArray: Array[Int] = Array(0, 1, 2)
+      MergeSort.sort(unsortedArray) should be (sortedArray)
+    }
+
+    scenario("Sort any array") {
+      forAll {(lst: List[Int]) =>
+        if (lst.nonEmpty) {
+          MergeSort.sort(lst.toArray) should be (lst.sortWith(_ < _).toArray)
+        }
+      }
+    }
   }
 }
