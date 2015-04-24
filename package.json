@@ -1,0 +1,32 @@
+{
+  "name": "Algorithms",
+  "version": "0.1.0",
+  "description": "Algorithms Implementation, for fun and perfection",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start ./src/test/javascript/conf/karma.js --browsers PhantomJS --reporters dots coverage --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EuDgee/Algorithms.git"
+  },
+  "keywords": [
+    "algorithms"
+  ],
+  "author": "Evgenii Mikheev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EuDgee/Algorithms/issues"
+  },
+  "homepage": "https://github.com/EuDgee/Algorithms",
+  "devDependencies": {
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-coverage": "^0.3.1",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon": "^1.0.4",
+    "karma-sinon-chai": "^0.3.0"
+  }
+}
