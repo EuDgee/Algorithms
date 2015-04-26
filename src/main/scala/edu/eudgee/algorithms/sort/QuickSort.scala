@@ -1,4 +1,4 @@
-package edu.eudgee.algorithms
+package edu.eudgee.algorithms.sort
 
 import scala.collection.mutable
 

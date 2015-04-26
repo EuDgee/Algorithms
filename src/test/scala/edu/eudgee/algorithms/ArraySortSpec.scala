@@ -1,5 +1,6 @@
 package edu.eudgee.algorithms
 
+import edu.eudgee.algorithms.sort.{QuickSort, MergeSort}
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FeatureSpec, GivenWhenThen, Matchers}
 
